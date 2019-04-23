@@ -26,7 +26,7 @@ class progbar:
     def period(self):
         return self._period
 
-    def update(self, tick):
+    def update(self, tick,info=''):
         clear_output()
         rate = tick / self._period
 
@@ -50,4 +50,4 @@ class progbar:
         str += "{0:3d}:{1:02d}:{2:02d}".format(h,m,s)
 #         sys.stdout.write("\r {}".format(str))
 #         sys.stdout.flush()
-        display("{0}".format(str))
+        display("{0} {1}".format(str,info))
