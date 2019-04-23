@@ -47,7 +47,7 @@ class progbar:
         m, s = divmod(s, 60)
         h, m = divmod(m, 60)
         d, h = divmod(h, 24)
-        str += "{0:3d}:{1:02d}:{2:02d}".format(h,m,s)
+        str += " {day}day{hour:3d}:{minute:02d}:{sec:02d}".format(day=d,hour=h,minute=m,sec=s)
 #         sys.stdout.write("\r {}".format(str))
 #         sys.stdout.flush()
         display("{0} {1}".format(str,info))
