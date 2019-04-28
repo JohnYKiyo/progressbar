@@ -2,11 +2,12 @@ import sys, time
 from IPython.display import display
 from IPython.display import clear_output
 class progbar:
-    def __init__(self, period=100, bars=32):
+    def __init__(self, period=100, bars=32,clear_display=True):
         self._period  = period
         self.bars     = bars
         self.active   = True
         self.start    = time.time()
+        self.clear_disp = clear_display
 
     def dispose(self):
         if self.active:
@@ -27,7 +28,8 @@ class progbar:
         return self._period
 
     def update(self, tick,info=''):
-        clear_output()
+        if self.clear_disp:
+            clear_output()
         rate = tick / self._period
 
         # progress rate
@@ -50,4 +52,4 @@ class progbar:
         str += " {day}day{hour:3d}:{minute:02d}:{sec:02d}".format(day=d,hour=h,minute=m,sec=s)
 #         sys.stdout.write("\r {}".format(str))
 #         sys.stdout.flush()
-        display("{0} {1}".format(str,info))
+        display("{0} {1}\n".format(str,info))
